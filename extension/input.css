@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
+
 body { font-family: 'Inter', sans-serif; }
 .explanation { font-size: 0.95em; color: #64748b; }
 .label { font-weight: 600; }
 .input { background: #f8fafc; }
+.active {
+    background-color: var(--color-gray-50);
+    text-decoration: underline;
+}

@@ -1,0 +1,19 @@
+{
+    "name": "UTMGuru: UTM Builder & Generator (No Tracking, No Coding)",
+    "description": "Build and generate UTM URLs for your campaigns. Save/bookmark UTM links for future reference.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+      "default_popup": "index.html",
+      "default_title": "UTMGuru"
+    },
+    "permissions": ["storage", "clipboardWrite"],
+    "icons": {
+      "16": "icons/favicon-16x16.png",
+      "48": "icons/favicon-48x48.png",
+      "128": "icons/favicon-128x128.png"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+    }
+}

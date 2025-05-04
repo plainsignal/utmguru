@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>UTM Guru: UTM builder & UTM generator — Free online tool for campaign URLs</title>
+  <meta name="title" content="UTM builder & UTM generator — Free Online Tool for Campaign URLs">
+  <meta name="description"
+    content="Create campaign URLs in seconds with this free UTM generator and UTM builder. Track your marketing performance across Google Analytics, Facebook, TikTok, and more.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-white min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-7xl min-w-2xl">
+    <div class="grid grid-cols-1">
+      <div
+        class="mb-5 py-3 col-span-1 text-center align-middle border-b border-gray-200 flex items-center justify-center">
+        <a href="https://utmguru.com/?utm_source=utmguru&utm_medium=tools&utm_campaign=chrome_extension" target="_blank" class="flex items-center">
+
+          <svg width="16px" height="16px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="lg">
+                <stop stop-color="#FFFFFF" offset="0%"></stop>
+                <stop stop-color="#D8D8D8" offset="100%"></stop>
+              </linearGradient>
+            </defs>
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g>
+                <rect id="Rectangle" stroke="#000000" stroke-width="3" fill="#000000" x="1.5" y="1.5" width="29"
+                  height="29" rx="14.5"></rect>
+                <text id="U" fill="url(#lg)" font-family="AndaleMono, Andale Mono" font-size="24" font-weight="normal">
+                  <tspan x="9" y="24">U</tspan>
+                </text>
+              </g>
+            </g>
+          </svg>
+          <span class="ml-2 align-middle font-bold">UTMGuru</span>
+        </a>
+      </div>
+      <div class="col-span-1">
+        <div class="bg-white">
+          <div class="flex flex-wrap pt-1 px-1 bg-gray-200">
+            <div class="py-1 flex-1/12 text-sm font-semibold underline">UTM Builder: </div>
+            <div class="flex float-right flex-wrap gap-1 text-right">
+              <button type="button"
+                class="utm-shortcut px-1 py-1 bg-gray-200 hover:bg-gray-300 text-sm font-semibold cursor-pointer"
+                data-platform="google">Google</button>
+              <button type="button"
+                class="utm-shortcut px-1 py-1 bg-gray-200 hover:bg-gray-300 text-sm font-semibold cursor-pointer"
+                data-platform="facebook">Facebook</button>
+              <button type="button"
+                class="utm-shortcut px-1 py-1 bg-gray-200 hover:bg-gray-300 text-sm font-semibold cursor-pointer"
+                data-platform="instagram">Instagram</button>
+              <button type="button"
+                class="utm-shortcut px-1 py-1 bg-gray-200 hover:bg-gray-300 text-sm font-semibold cursor-pointer"
+                data-platform="tiktok">TikTok</button>
+              <button type="button"
+                class="utm-shortcut px-1 py-1 bg-gray-200 hover:bg-gray-300 text-sm font-semibold cursor-pointer"
+                data-platform="linkedin">LinkedIn</button>
+              <button type="button"
+                class="utm-shortcut px-1 py-1 bg-gray-200 hover:bg-gray-300 text-sm font-semibold cursor-pointer"
+                data-platform="reddit">Reddit</button>
+              <button type="button"
+                class="utm-shortcut pl-1 pr-0 py-1 bg-gray-200 hover:bg-gray-300 text-sm font-semibold cursor-pointer"
+                data-platform="x">X (Twitter)</button>
+            </div>
+          </div>
+
+          <form id="utm-form" class="space-y-4 mt-5">
+            <div>
+              <label class="label block mb-1" for="base-url">Base URL</label>
+              <input class="input block w-full rounded-lg border border-gray-200 px-3 py-2" type="url" id="base-url"
+                placeholder="https://yourwebsite.com/page" required>
+              <div class="explanation mt-1">The website link where you want to send users.</div>
+            </div>
+            <div>
+              <label class="label block mb-1" for="utm-source">utm_source</label>
+              <input class="input block w-full rounded-lg border border-gray-200 px-3 py-2" type="text" id="utm-source"
+                placeholder="e.g. newsletter, facebook" required>
+              <div id="explain-source" class="explanation mt-1"></div>
+            </div>
+            <div>
+              <label class="label block mb-1" for="utm-medium">utm_medium</label>
+              <input class="input block w-full rounded-lg border border-gray-200 px-3 py-2" type="text" id="utm-medium"
+                placeholder="e.g. email, cpc, banner" required>
+              <div id="explain-medium" class="explanation mt-1"></div>
+            </div>
+            <div>
+              <label class="label block mb-1" for="utm-campaign">utm_campaign</label>
+              <input class="input block w-full rounded-lg border border-gray-200 px-3 py-2" type="text"
+                id="utm-campaign" placeholder="e.g. spring_sale, launch2025" required>
+              <div id="explain-campaign" class="explanation mt-1"></div>
+            </div>
+            <div>
+              <label class="label block mb-1" for="utm-term">utm_term <span
+                  class="text-gray-400 text-xs">(optional)</span></label>
+              <input class="input block w-full rounded-lg border border-gray-200 px-3 py-2" type="text" id="utm-term"
+                placeholder="e.g. running_shoes">
+              <div id="explain-term" class="explanation mt-1"></div>
+            </div>
+            <div>
+              <label class="label block mb-1" for="utm-content">utm_content <span
+                  class="text-gray-400 text-xs">(optional)</span></label>
+              <input class="input block w-full rounded-lg border border-gray-200 px-3 py-2" type="text" id="utm-content"
+                placeholder="e.g. banner_ad, textlink">
+              <div id="explain-content" class="explanation mt-1"></div>
+            </div>
+          </form>
+          <div class="mt-6">
+            <label class="block font-semibold mb-2 text-gray-700">Generated URL:</label>
+            <textarea id="utm-url" class="w-full rounded-lg border border-gray-200 px-3 py-2 bg-gray-100 text-sm"
+              rows="2" readonly></textarea>
+            <div id="copied-msg" class="ml-3 text-green-500 text-sm hidden">Copied!</div>
+            <button id="copy-btn"
+              class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition cursor-pointer">Copy
+              URL</button>
+            <button id="reset-btn"
+              class="utm-shortcut mt-2 px-4 py-2 bg-gray-600 text-white rounded-xl font-semibold hover:bg-gray-700 transition cursor-pointer"
+              data-platform="custom">Reset</button>
+
+            <button id="save-btn"
+              class="px-4 py-2 bg-black text-white rounded-xl font-semibold hover:bg-gray-800 transition cursor-pointer">Save
+              UTM URL</button>
+            <button id="show-saved-btn"
+              class="px-4 py-2 bg-black text-white rounded-xl font-semibold hover:bg-gray-800 transition cursor-pointer ml-2">Show
+              Saved URLs</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-1 text-right text-sm">powered by <a class="underline text-blue-500 hover:text-blue-700"
+          href="https://plainsignal.com/?utm_source=utmguru&utm_medium=tools&utm_campaign=chrome_extension"
+          title="PlainSignal - Privacy-focused web analytics" target="_blank">PlainSignal</a></div>
+    </div>
+  </div>
+  <!-- Save Modal -->
+  <div id="save-modal" class="fixed inset-0 bg-black bg-opacity-30 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-2xl p-6 w-full max-w-md shadow-lg">
+      <h2 class="text-lg font-semibold mb-4">Save UTM URL</h2>
+      <input type="text" id="save-description" placeholder="Description"
+        class="input block w-full mb-3 rounded-lg border border-gray-200 px-3 py-2">
+      <textarea id="save-url" rows="3" readonly
+        class="input block w-full mb-3 rounded-lg border border-gray-200 px-3 py-2"></textarea>
+      <div class="flex justify-end gap-2">
+        <button id="cancel-save" class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 cursor-pointer">Cancel</button>
+        <button id="confirm-save" class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 cursor-pointer">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- List Modal -->
+  <div id="list-modal" class="fixed inset-0 bg-gray-700 bg-opacity-30 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-2xl p-6 w-full max-w-4xl shadow-lg max-h-[80vh] overflow-y-auto">
+      <h2 class="text-lg font-semibold mb-4">Saved UTM URLs</h2>
+      <ul id="saved-list" class="space-y-3 text-sm text-gray-800"></ul>
+      <div class="flex justify-end mt-4">
+        <button id="close-list"
+          class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 cursor-pointer">Close</button>
+      </div>
+    </div>
+  </div>
+  <script src="./main.js" type="text/javascript"></script>
+</body>
+
+</html>
