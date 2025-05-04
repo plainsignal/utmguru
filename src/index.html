@@ -72,15 +72,15 @@
       <div class="sm:col-span-3 col-span-1">
         <div class="bg-white rounded-2xl shadow-lg p-8">
 
-          <div class="mb-5 flex flex-wrap gap-2">
-            <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="custom">Custom</button>
-            <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="google">Google Ads</button>
-            <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="facebook">Facebook</button>
-            <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="instagram">Instagram</button>
-            <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="tiktok">TikTok</button>
-            <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="linkedin">LinkedIn</button>
-            <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="reddit">Reddit</button>
-            <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="x">X (Twitter)</button>
+          <div class="mb-5 flex border-l-2 rounded-md border-black flex-wrap sm:gap-4 gap-2">
+              <span class="px-3 py-1 text-sm font-semibold">Prefill for ads:</span>
+              <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="google">Google</button>
+              <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="facebook">Facebook</button>
+              <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="instagram">Instagram</button>
+              <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="tiktok">TikTok</button>
+              <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="linkedin">LinkedIn</button>
+              <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="reddit">Reddit</button>
+              <button type="button" class="utm-shortcut px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-lg border border-gray-200 text-sm font-semibold cursor-pointer" data-platform="x">X (Twitter)</button>
           </div>
 
           <form id="utm-form" class="space-y-4">
@@ -118,15 +118,148 @@
           <div class="mt-6">
             <label class="block font-semibold mb-2 text-gray-700">Generated URL:</label>
             <textarea id="utm-url" class="w-full rounded-lg border border-gray-200 px-3 py-2 bg-gray-100 text-sm" rows="2" readonly></textarea>
-            <button id="copy-btn" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition">Copy URL</button>
-            <span id="copied-msg" class="ml-3 text-green-500 text-sm hidden">Copied!</span>
+            <div id="copied-msg" class="ml-3 text-green-500 text-sm hidden">Copied!</div>
+            <button id="copy-btn" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition cursor-pointer">Copy URL</button>
+            <button id="reset-btn" class="utm-shortcut mt-2 px-4 py-2 bg-gray-600 text-white rounded-xl font-semibold hover:bg-gray-700 transition cursor-pointer" data-platform="custom">Reset</button>
+
+            <button id="save-btn" class="px-4 py-2 bg-black text-white rounded-xl font-semibold hover:bg-gray-800 transition cursor-pointer">Save UTM URL</button>
+            <button id="show-saved-btn" class="px-4 py-2 bg-black text-white rounded-xl font-semibold hover:bg-gray-800 transition cursor-pointer ml-2">Show Saved URLs</button>
           </div>
         </div>
       </div>
       <div class="sm:col-span-4 col-span-1 text-right text-sm">powered by <a class="underline text-blue-500 hover:text-blue-700" href="https://plainsignal.com/?utm_source=utmguru&utm_medium=tools&utm_campaign=2025" title="PlainSignal - Simple Google Analytics Alternative">PlainSignal</a></div>
     </div>
   </div>
+<!-- Save Modal -->
+<div id="save-modal" class="fixed inset-0 bg-black bg-opacity-30 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-2xl p-6 w-full max-w-md shadow-lg">
+    <h2 class="text-lg font-semibold mb-4">Save UTM URL</h2>
+    <input type="text" id="save-description" placeholder="Description" class="input block w-full mb-3 rounded-lg border border-gray-200 px-3 py-2">
+    <textarea id="save-url" rows="3" readonly class="input block w-full mb-3 rounded-lg border border-gray-200 px-3 py-2"></textarea>
+    <div class="flex justify-end gap-2">
+      <button id="cancel-save" class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800">Cancel</button>
+      <button id="confirm-save" class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- List Modal -->
+<div id="list-modal" class="fixed inset-0 bg-black bg-opacity-30 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-2xl p-6 w-full max-w-4xl shadow-lg max-h-[80vh] overflow-y-auto">
+    <h2 class="text-lg font-semibold mb-4">Saved UTM URLs</h2>
+    <ul id="saved-list" class="space-y-3 text-sm text-gray-800"></ul>
+    <div class="flex justify-end mt-4">
+      <button id="close-list" class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800">Close</button>
+    </div>
+  </div>
+</div>
   <script>
+  const saveBtn = document.getElementById('save-btn');
+  const showSavedBtn = document.getElementById('show-saved-btn');
+  const saveModal = document.getElementById('save-modal');
+  const listModal = document.getElementById('list-modal');
+  const confirmSave = document.getElementById('confirm-save');
+  const cancelSave = document.getElementById('cancel-save');
+  const closeList = document.getElementById('close-list');
+  const saveURLTextarea = document.getElementById('save-url');
+  const saveDescInput = document.getElementById('save-description');
+  const savedList = document.getElementById('saved-list');
+
+  function getItems() {
+    return JSON.parse(localStorage.getItem('utm_urls') || '[]');
+  }
+
+  function setItems(items) {
+    localStorage.setItem('utm_urls', JSON.stringify(items));
+  }
+
+  function renderSavedList() {
+    savedList.innerHTML = '';
+    const items = getItems();
+    if (items.length === 0) {
+      savedList.innerHTML = '<li class="text-gray-500">No saved URLs.</li>';
+    } else {
+      items.forEach(({ desc, url }, index) => {
+        const li = document.createElement('li');
+        li.classList.add('border', 'border-gray-200', 'rounded', 'p-4');
+        li.innerHTML = `
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+            <div class="flex-1">
+              <input type="text" class="desc-input w-full font-semibold text-gray-800 mb-1 border border-gray-200 rounded px-2 py-1" value="${desc}" data-index="${index}" />
+              <div class="flex items-center gap-2">
+                <input type="text" class="url-copy-input flex-1 border border-gray-200 rounded px-2 py-1 text-sm text-blue-600" value="${url}" readonly />
+                <button class="copy-link text-xs bg-black text-white px-2 py-1 rounded hover:bg-gray-800" data-url="${url}">Copy</button>
+              </div>
+            </div>
+            <button data-index="${index}" class="delete-btn text-red-600 hover:text-red-800 text-xs">Delete</button>
+          </div>`;
+        savedList.appendChild(li);
+      });
+
+      // Bind delete buttons
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const index = parseInt(this.dataset.index);
+          const updated = getItems();
+          updated.splice(index, 1);
+          setItems(updated);
+          renderSavedList();
+        });
+      });
+
+      // Bind copy buttons
+      document.querySelectorAll('.copy-link').forEach(btn => {
+        btn.addEventListener('click', function () {
+          navigator.clipboard.writeText(this.dataset.url);
+          this.innerText = 'Copied';
+          setTimeout(() => { this.innerText = 'Copy'; }, 1500);
+        });
+      });
+
+      // Bind description input updates
+      document.querySelectorAll('.desc-input').forEach(input => {
+        input.addEventListener('change', function () {
+          const index = parseInt(this.dataset.index);
+          const updated = getItems();
+          updated[index].desc = this.value;
+          setItems(updated);
+        });
+      });
+    }
+  }
+
+  saveBtn.addEventListener('click', () => {
+    saveDescInput.value = '';
+    saveURLTextarea.value = document.getElementById('utm-url').value;
+    saveModal.classList.remove('hidden');
+    saveModal.classList.add('flex');
+  });
+
+  cancelSave.addEventListener('click', () => {
+    saveModal.classList.add('hidden');
+  });
+
+  confirmSave.addEventListener('click', () => {
+    const desc = saveDescInput.value.trim();
+    const url = saveURLTextarea.value.trim();
+    if (desc && url) {
+      const items = getItems();
+      items.push({ desc, url });
+      setItems(items);
+      saveModal.classList.add('hidden');
+    }
+  });
+
+  showSavedBtn.addEventListener('click', () => {
+    renderSavedList();
+    listModal.classList.remove('hidden');
+    listModal.classList.add('flex');
+  });
+
+  closeList.addEventListener('click', () => {
+    listModal.classList.add('hidden');
+  });
+
     const explainers = {
       source: "The <b>Source</b> (utm_source) identifies where your traffic comes from. Example: <i>newsletter</i>, <i>facebook</i>, <i>google</i>.",
       medium: "The <b>Medium</b> (utm_medium) describes the marketing channel. Example: <i>email</i>, <i>cpc</i> (cost per click), <i>banner</i>.",

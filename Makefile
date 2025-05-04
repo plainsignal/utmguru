@@ -1,6 +1,6 @@
 build:
 	npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css
-	rm ./src/*.gz ./src/*.br
+	rm ./src/*.gz ./src/*.br || true
 	gzip -9 -f -k ./src/index.html
 	gzip -9 -f -k ./src/favicon.ico
 	gzip -9 -f -k ./src/output.css
@@ -9,4 +9,4 @@ build:
 	brotli -9 -f -k ./src/favicon.ico
 	brotli -9 -f -k ./src/output.css
 	brotli -9 -f -k ./src/images/utm-builder-og.png
-	cd src && zip -jvr ../upload.zip * -x "*.DS_Store"
+	cd src && zip -vr ../upload.zip * -x "*.DS_Store"
