@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 upload.zip
+chrome-extension.zip
 *.br
 *.gz
 
