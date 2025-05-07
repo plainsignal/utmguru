@@ -1,6 +1,6 @@
 {
-    "name": "UTM Guru - UTM Builder - UTM Generator",
-    "description": "Build, generate UTM URLs, save UTM links locally for future use, and copy them to the clipboard.",
+    "name": "UTMGuru - UTM Builder - UTM Generator",
+    "description": "Build and generate UTM URLs. Save/bookmark UTM links for future use.",
     "version": "1.0",
     "manifest_version": 3,
     "action": {
